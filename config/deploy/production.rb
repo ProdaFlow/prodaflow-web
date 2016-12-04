@@ -4,7 +4,7 @@
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
-role :app, %w{deploy@prodaflow.io}
+role :app, %w{prodaflow.io}
 
 set :stage, :production
 
@@ -15,7 +15,7 @@ set :stage, :production
 # something that quacks like a hash can be used to set
 # extended properties on the server.
 
-server '159.203.49.85', user: 'deploy', roles: %w{app}
+server 'prodaflow.io', user: 'deploy', roles: %w{app}
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
