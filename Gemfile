@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'capistrano', '~> 3.6'
 gem 'capistrano-bundler', '~> 1.2'
 gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-passenger'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 group :development, :test do
