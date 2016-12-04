@@ -1,8 +1,8 @@
 # config valid only for Capistrano 3.1
-lock '3.1.0'
+lock '3.6.1'
 
 set :application, 'prodaflow-web'
-set :repo_url, 'git@example.com:ProdaFlow/prodaflow-web.git'
+set :repo_url, 'git@github.com:ProdaFlow/prodaflow-web.git'
 
 set :deploy_to, '/home/deploy/prodaflow-web'
 
@@ -51,5 +51,5 @@ namespace :deploy do
 
   after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
-  
+
 end

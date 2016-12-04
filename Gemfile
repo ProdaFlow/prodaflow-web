@@ -27,9 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-rails', '~> 1.1.1'
+gem 'capistrano', '~> 3.6'
+gem 'capistrano-bundler', '~> 1.2'
+gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 group :development, :test do
