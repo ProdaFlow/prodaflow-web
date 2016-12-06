@@ -36,6 +36,8 @@ gem 'capistrano-rbenv', github: "capistrano/rbenv"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec_junit_formatter', '0.2.2'
 end
 
 group :development do
