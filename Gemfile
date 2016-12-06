@@ -38,6 +38,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'rspec_junit_formatter', '0.2.2'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
