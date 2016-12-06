@@ -1,6 +1,11 @@
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    email "MyString"
+    name "Peter Parker"
+    email "iamnotspiderman@parker.com"
+
+    factory :empty_user do
+      name ""
+      email ""
+    end
   end
 end
