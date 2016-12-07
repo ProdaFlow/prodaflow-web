@@ -1,39 +1,68 @@
 require "rails_helper"
 
 RSpec.describe User, :type => :model do
-  it "should have a name field." do
+  it "has a name field." do
     user = build(:user)
     expect(user).to respond_to(:name)
   end
 
-  it "should have an email field." do
+  it "has an email field." do
     user = build(:user)
     expect(user).to respond_to(:email)
   end
 
-  it "should verify name is provided." do
+  it "verifies that name is provided." do
     should validate_presence_of(:name)
   end
 
-  it "should verify email is provided." do
+  it "verifies that email is provided." do
     should validate_presence_of(:email)
   end
 
-  it "should pass validation when given valid parameters." do
-    user = build(:user)
-    expect(user.valid?).to be true
-  end
-
-  it "should fail validation when nil or empty parameters." do
-    user = build(:empty_user)
-    expect(user.valid?).to be false
-  end
-
-  it "should raise error if email length is greater than 150 characters." do
+  it "fails validation if email length is greater than 150 characters." do
     should validate_length_of(:email).is_at_most(150)
   end
 
-  it "should raise error if name length is greater than 150 characters." do
+  it "fails validation if name length is greater than 150 characters." do
     should validate_length_of(:name).is_at_most(150)
+  end
+
+  it "passses validation if user has valid email address." do
+    user = build(:user)
+    expect(user.valid?).to eq(true)
+  end
+
+  it "has no '@' in email address." do
+    user = build(:user)
+    user.email = "hi.com"
+    expect(user.valid?).to eq(false)
+  end
+
+  it "has two '..' in email address." do
+    user = build(:user)
+    user.email = "hello@hi..com"
+    expect(user.valid?).to eq(false)
+  end
+
+  it "must have unique email address." do
+    user = build(:user)
+    dup = user.dup
+    user.save
+    expect(dup.valid?).to eq(false)
+  end
+
+  it "downcases email address on save." do
+    user = build(:user)
+    user.email = "myEmail@Gmail.com"
+    user.save
+    user.reload
+    expect(user.email).to eq("myemail@gmail.com")
+  end
+
+  it "must meet password complexity requirements." do
+    user = build(:user, email: 'hi@email.com',
+                        password: 'ComplexPassword1',
+                        password_confirmation: 'ComplexPassword1')
+    expect(user.valid?).to eq(true)
   end
 end
