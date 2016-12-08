@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Oswald);
+
+$primary-color: #34a2e8;
+$primary-font-color: #ffffff;
+$open-sans: 'Open Sans', sans-serif;
+$oswald: 'Oswald', sans-serif;
+
+body {
+  background-color: $primary-color;
+  color: $primary-font-color;
+  font-family: $open-sans;
+}
+
+h1 {
+  font-family: $oswald;
+}
+
+#logo {
+  display: block;
+  margin: auto;
+  transform:scale(0.3);
+  -webkit-transform:scale(0.3);
+}
