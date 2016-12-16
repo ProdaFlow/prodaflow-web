@@ -1,7 +1,9 @@
+##
+# User
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   PASSWORD_COMPLEXITY = /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./
-  
+
   before_save { self.email = email.downcase }
 
   has_secure_password
@@ -14,8 +16,10 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true,
                        length: { minimum: 6,
-                                 maximum: 50,
-                                 message: "Password must be between 6 and 50 characters long." },
+                                 maximum: 70,
+                                 message: 'Password must be between 6 and 70'\
+                                          ' characters long.' },
                        format: { with: PASSWORD_COMPLEXITY,
-                                 message: "Password must have at least one uppercase letter and a number." }
+                                 message: 'Password must have at least one'\
+                                          ' uppercase letter and a number.' }
 end
