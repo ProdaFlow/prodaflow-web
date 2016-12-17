@@ -35,7 +35,7 @@ gem 'capistrano', '~> 3.6'
 gem 'capistrano-bundler', '~> 1.2'
 gem 'capistrano-rails', '~> 1.2'
 gem 'capistrano-passenger'
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
+gem 'capistrano-rbenv', github: 'capistrano/rbenv'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,7 +43,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rspec_junit_formatter', '0.2.2'
   gem 'shoulda-matchers', '~> 3.1'
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rails-controller-testing'
 end
 
 group :development do
