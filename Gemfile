@@ -26,6 +26,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use bourbon / neat for UI
+gem 'bourbon', '~> 5.0.0.beta.7'
+gem 'neat', '~> 1.8'
+
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.6'
 gem 'capistrano-bundler', '~> 1.2'

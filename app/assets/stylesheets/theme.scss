@@ -11,13 +11,13 @@ body {
   font-family: $open-sans;
 }
 
-h1 {
-  font-family: $oswald;
-}
-
 #logo {
   display: block;
   margin: auto;
   transform:scale(0.3);
   -webkit-transform:scale(0.3);
+}
+
+section {
+  @include outer-container(500px);
 }
