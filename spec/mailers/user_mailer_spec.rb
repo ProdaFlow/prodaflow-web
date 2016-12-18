@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe UserMailerMailer, type: :mailer do
+RSpec.describe UserMailer, type: :mailer do
   describe "account_activation" do
-    let(:mail) { UserMailerMailer.account_activation }
+    let(:mail) { UserMailer.account_activation }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Account activation")
@@ -16,7 +16,7 @@ RSpec.describe UserMailerMailer, type: :mailer do
   end
 
   describe "password_reset" do
-    let(:mail) { UserMailerMailer.password_reset }
+    let(:mail) { UserMailer.password_reset }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Password reset")
