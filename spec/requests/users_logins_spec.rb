@@ -1,6 +1,9 @@
 require 'rails_helper'
+require 'login_helper'
 
 RSpec.describe 'UsersLogins', type: :request do
+  include_context 'Login Helpers'
+
   let(:created_user) { FactoryGirl.create :user }
 
   def log_in_as(user, password: 'MyPassword1', remember_me: '1')

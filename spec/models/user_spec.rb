@@ -65,4 +65,11 @@ RSpec.describe User, :type => :model do
                         password_confirmation: 'ComplexPassword1')
     expect(user.valid?).to eq(true)
   end
+
+  context 'when user has nil digest' do
+    it 'authenticated? should return false' do
+      user = build(:user, email: 'james.bond@mia.gov.uk')
+      expect(user.authenticated?(:remember, '')).to be false
+    end
+  end
 end
