@@ -5,16 +5,7 @@ RSpec.describe 'UsersLogins', type: :request do
   include_context 'Login Helpers'
 
   let(:created_user) { FactoryGirl.create :user }
-
-  def log_in_as(user, password: 'MyPassword1', remember_me: '1')
-    post login_path, params: { session: { email: user.email,
-                                          password: password,
-                                          remember_me: remember_me } }
-  end
-
-  def is_logged_in?
-    !session[:user_id].nil?
-  end
+  let(:unactivated) { FactoryGirl.create :unactivated_user }
 
   describe 'User attempts to' do
     it 'login with invalid credentials' do
@@ -27,6 +18,13 @@ RSpec.describe 'UsersLogins', type: :request do
 
       get root_path
       expect(flash.empty?).to be true
+    end
+
+    it 'login to unactivated account' do
+      post login_path, params: { session: { email: unactivated.email,
+                                            password: 'MyPassword1' } }
+      expect(is_logged_in?).to be false
+      expect(response).to redirect_to(root_path)
     end
 
     it 'login with valid credentials' do

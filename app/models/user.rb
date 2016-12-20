@@ -1,7 +1,7 @@
 ##
 # User
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   PASSWORD_COMPLEXITY = /\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)./
@@ -50,6 +50,16 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns(reset_digest: User.digest(reset_token),
+                   reset_sent_at: Time.zone.now)
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
   # Returns the hash digest of the given string.
   def self.digest(str)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -60,6 +70,10 @@ class User < ApplicationRecord
   # Returns a random token
   def self.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 
   private

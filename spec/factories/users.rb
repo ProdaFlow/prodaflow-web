@@ -12,6 +12,12 @@ FactoryGirl.define do
       email ''
     end
 
+    factory :unactivated_user do
+      email 'spiderman@thing.com'
+      activated false
+      activated_at nil
+    end
+
     factory :invalid_password do
       password 'password1'
       password_confirmation 'password1'

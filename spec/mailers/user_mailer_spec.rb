@@ -15,5 +15,16 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.body.encoded).to include(created_user.activation_token)
       expect(mail.body.encoded).to include(CGI.escape(created_user.email))
     end
+
+    it 'password_reset' do
+      created_user.reset_token = User.new_token
+      mail = UserMailer.password_reset(created_user)
+
+      expect(mail.subject).to eq('Password reset')
+      expect(mail.to).to eq([created_user.email])
+      expect(mail.from).to eq(['noreply@prodaflow.io'])
+      expect(mail.body.encoded).to include(created_user.reset_token)
+      expect(mail.body.encoded).to include(CGI.escape(created_user.email))
+    end
   end
 end
