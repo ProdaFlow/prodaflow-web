@@ -9,7 +9,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% unless content_for?(:hide_header) %>
+      <%= render 'layouts/header' %>
+    <% end %>
 
     <div class="container">
       <% flash.each do |message_type, message| %>

@@ -1,3 +1,57 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#logo {
+  transform:scale(0.5);
+  -webkit-transform:scale(0.5);
+}
+
+#login-container {
+  background: white;
+  padding: 25px;
+  color: black;
+  border-radius: 25px;
+
+  div {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+section {
+  legend {
+    margin: auto;
+    font-size: 25px;
+  }
+}
+
+input {
+  margin: 15px 15px 0 0;
+}
+
+input[type="email"] {
+  height: 50px;
+}
+
+input[type="password"] {
+  height: 50px;
+}
+
+input[type="submit"] {
+  width: 100%;
+}
+
+.signup {
+  margin-top: 15px;
+  text-align: center;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
